@@ -1,10 +1,14 @@
-nav {
+.nav {
   height: 120px;
   color: #FFFFFF;
   width: 100vw;
+  position: fixed;
+  top: 0;
   background-color: #4056A1 ;
   padding-left: 1.5em;
   padding-top: 1.5em;
+  
+
 }
 
 nav div {
@@ -15,13 +19,13 @@ nav div {
   /* padding-bottom: 1.5em; */
 }
 
-nav > span {
+.tweeter {
   font-family: 'Bungee', cursive;
   padding-top: 5%;
  
 }
 
-nav div > span {
+.write-a-new-tweet{
   display: flex;
   justify-content: flex-end;;
   /* padding-left: 50em; */
@@ -29,11 +33,13 @@ nav div > span {
   flex-direction: column;
 }
 
-nav div > span > i {
+/* nav div > span > i  */
+.fas fa-angle-double-down  {
   display: flex;
-  padding-left: 3em;
+  padding-left: 5em;
   justify-content: flex-end;
   padding-bottom: 1.5em;
   color: red;
  
 }
+
