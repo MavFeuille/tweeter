@@ -34,10 +34,10 @@ nav div {
 }
 
 /* nav div > span > i  */
-.fas fa-angle-double-down  {
+.fas.fa-angle-double-down  {
   display: flex;
-  padding-left: 5em;
-  justify-content: flex-end;
+  padding-left: 3em;
+  /* justify-content: flex-end; */
   padding-bottom: 1.5em;
   color: red;
  
