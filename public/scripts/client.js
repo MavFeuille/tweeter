@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 // Returning tweet <article>
 
 $(document).ready (() => {
@@ -82,10 +84,33 @@ $(document).ready (() => {
       `;
     return tweetHtml;
   };
-  
- 
   renderTweets(data);
+
+  //Add event listener for submit & prevent default behavior
+  
+    const $incomingTweet = $(".incomingTweet");
+    $incomingTweet.on('submit',function (event) {
+      event.preventDefault();
+      console.log("Submit-button clicked, performing ajax call...")
+
+      const formDataString = $(this).serialize();
+      // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
+      console.log("this: ", this);
+      console.log("formDataString: ", formDataString);
+      const tweetMessage = event.target.value;
+
+
+     $.post("/tweets", formDataString, function (formDataString) {
+      console.log("Success", tweetMessage);
+
+     })
+    })
+  
+  const $textarea = $(".textarea");
+  $textarea.on('submit')
+
 });
+
 
 
 
