@@ -29,7 +29,9 @@ body {
   width: 90%;
   display: flex;
   justify-content: center;
-  background-color: #f4f1ec;
+  /* background-color: #f4f1ec; */
+  background-color: #ECEADE;
   margin: 0 auto;
-    
+  flex-direction: column;
+  
  }

@@ -1,4 +1,4 @@
-header{
+.app-header {
   height: 400px;
   width: 100%;
   background-color: orange;
@@ -14,10 +14,10 @@ header{
   
 }
 
-.avatar  img{
+/* .avatar  img{ */
   /* height: 50%; */
   /* margin-top: 120px */
-}
+/* } */
 
 /* .avartar {
   margin-top: 150px;
