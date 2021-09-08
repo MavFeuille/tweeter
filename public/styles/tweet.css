@@ -54,7 +54,7 @@
 }
 
 .tweet-footer {
-  font-size: 13px;
+  font-size: 17px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -67,6 +67,7 @@
   align-items: center;
   padding-right: 33px;
   margin-left: 5px;
+  
 }
 
 .fas.fa-flag {
