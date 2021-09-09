@@ -6,9 +6,15 @@
  */
 
 
+ //Escape function to prevent XSS for tweet element created as a string literal
+ const escape = function (str) {
+  let tweetArticle = document.createElement("tweet-article");
+  tweetArticle.appendChild(document.createTextNode(str));
+  return tweetArticle.innerHTML;
+};
+
 
 // Returning tweet <article>
-
 $(document).ready (() => {
     
   //Extract each data OBJECT from the data ARRAY
@@ -33,23 +39,23 @@ $(document).ready (() => {
     const tweetHandle = tweetData.user.handle;
     const tweetContent = tweetData.content.text;
     const tweetCreated = timeago.format(tweetData.created_at);
-  
-    let tweetHtml = `       
+
+    const tweetHtml = `       
              <article class="tweet-article">
                <header class="tweet-header">
                  <div class="display-pic-name">
-                   <img width=50px height=50px src="${avatars}"> 
-                   <h3 class="tweeter-name">${name}</h3>
+                   <img width=50px height=50px src="${escape(avatars)}"> 
+                   <h3 class="tweeter-name">${escape(name)}</h3>
                  </div>
-                   <h3 class="hastag-name">${tweetHandle}</h3>
+                   <h3 class="hastag-name">${escape(tweetHandle)}</h3>
                </header>
                <div class="tweet-body">
                  <p>
-                   ${tweetContent}
+                   ${escape(tweetContent)}
                </div>
                <footer class="tweet-footer">
                  <p>
-                   ${tweetCreated}
+                   ${escape(tweetCreated)}
                  </p>
                  <span class="footer-icons">
                    <i class="fas fa-flag"></i>
