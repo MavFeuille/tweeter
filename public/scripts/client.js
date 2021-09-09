@@ -64,34 +64,36 @@ $(document).ready (() => {
   
 
   //Add event listener for submit & prevent default behavior
-  
   const $incomingTweet = $(".incomingTweet");
   $incomingTweet.on('submit',function (event) {
     event.preventDefault();
-    console.log("Submit-button clicked, performing ajax call...")
+    console.log("Incoming tweet is on its way, performing ajax call...")
 
     const formDataString = $(this).serialize();
-    // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
+    console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
     console.log("this: ", this);
     console.log("formDataString: ", formDataString);
-    const tweetMessage = event.target.value;
-
-
-    // $.post("/tweets", formDataString, function (formDataString) {
-    //   console.log("Success", tweetMessage);
-
-    // })
-    $.ajax({
-      method: "POST",
-      url: "/tweets",
-      data: formDataString,
-      success: function (formDataString) {
-        console.log("Success", tweetMessage);
-        loadTweets();
-      }
-
-    });
-
+    // const tweetLength = formDataString.length;
+    // console.log("🚀 ~ file: client.js ~ line 77 ~ tweetLength", tweetLength)
+    
+    const tweetLength = $(".textarea").val().length;
+    console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength)
+    
+    if (tweetLength === 0) {
+      alert("Please feed me with some text!");
+    } else if (tweetLength >140) {
+      alert("Tweet is too long T___T");
+    } else {
+      $.ajax({
+        method: "POST",
+        url: "/tweets",
+        data: formDataString,
+        success: function (formDataString) {
+          console.log("Success", formDataString);
+          loadTweets();
+        }
+      });
+    }
   });
 
   const loadTweets = function () {
