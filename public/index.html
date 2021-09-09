@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/error.css" type="text/css" />
+
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -54,16 +56,26 @@
     <main class="container">
       <section class="new-tweet">
         <!-- <h2>Compose Tweet</h2> -->
-        <form class="incomingTweet" action="/tweets" method="POST" >
-          <label for="tweet-text" class="tweet-text-label">What are you humming about?</label>
-          <div class="around-text-area">
-            <textarea class="textarea" name="text" id="tweet-text"></textarea>
+        <div class="main-error">
+          <div id="0characters" class="error">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <p>Please feed me with some text!</p>
           </div>
-          <div class="bottomDiv">
-            <button class="submit-button" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>      
-        </form>
+          <div id="tweet-too-long" class="error">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <p>Tweet is too long T___T</p>
+          </div>
+      </div>
+          <form class="incomingTweet" action="/tweets" method="POST" >
+            <label for="tweet-text" class="tweet-text-label">What are you humming about?</label>
+            <div class="around-text-area">
+              <textarea class="textarea" name="text" id="tweet-text"></textarea>
+            </div>
+            <div class="bottomDiv">
+              <button class="submit-button" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
+            </div>      
+          </form>
       </section>
 
       
