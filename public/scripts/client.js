@@ -13,10 +13,16 @@
   return tweetArticle.innerHTML;
 };
 
+//Helper function set timeout
+const popError = function () {
+  $(".error").delay(10000).slideUp("slow");
+};
 
 // Returning tweet <article>
 $(document).ready (() => {
-    
+   //Hide error message by default
+   $(".error").hide();
+
   //Extract each data OBJECT from the data ARRAY
   const renderTweets = function (tweets) {
     $("#tweets-container").empty();
@@ -69,7 +75,7 @@ $(document).ready (() => {
   };
   
 
-  //Add event listener for submit & prevent default behavior
+  //Add event listener for submitting form & prevent default behavior
   const $incomingTweet = $(".incomingTweet");
   $incomingTweet.on('submit',function (event) {
     event.preventDefault();
@@ -85,10 +91,13 @@ $(document).ready (() => {
     const tweetLength = $(".textarea").val().length;
     console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength)
     
+    
     if (tweetLength === 0) {
-      alert("Please feed me with some text!");
+      // alert("Please feed me with some text!");
+      $("#0characters").slideDown("slow", popError);
     } else if (tweetLength >140) {
-      alert("Tweet is too long T___T");
+      // alert("Tweet is too long T___T");
+      $("#tweet-too-long").slideDown("slow", popError);
     } else {
       $.ajax({
         method: "POST",
@@ -118,9 +127,6 @@ $(document).ready (() => {
   loadTweets();
   // const $textarea = $(".textarea");
   // $textarea.on('submit')
-
-  
-  
 
 });
 
