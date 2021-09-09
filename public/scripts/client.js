@@ -1,3 +1,4 @@
+
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -9,34 +10,10 @@
 // Returning tweet <article>
 
 $(document).ready (() => {
-  
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
-  
+    
   //Extract each data OBJECT from the data ARRAY
   const renderTweets = function (tweets) {
+    $("#tweets-container").empty();
     for (const item of tweets) {
       // loops through tweets
       // calls createTweetElement for each tweet
@@ -84,32 +61,61 @@ $(document).ready (() => {
       `;
     return tweetHtml;
   };
-  renderTweets(data);
+  
 
   //Add event listener for submit & prevent default behavior
   
-    const $incomingTweet = $(".incomingTweet");
-    $incomingTweet.on('submit',function (event) {
-      event.preventDefault();
-      console.log("Submit-button clicked, performing ajax call...")
+  const $incomingTweet = $(".incomingTweet");
+  $incomingTweet.on('submit',function (event) {
+    event.preventDefault();
+    console.log("Submit-button clicked, performing ajax call...")
 
-      const formDataString = $(this).serialize();
-      // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
-      console.log("this: ", this);
-      console.log("formDataString: ", formDataString);
-      const tweetMessage = event.target.value;
+    const formDataString = $(this).serialize();
+    // console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
+    console.log("this: ", this);
+    console.log("formDataString: ", formDataString);
+    const tweetMessage = event.target.value;
 
 
-     $.post("/tweets", formDataString, function (formDataString) {
-      console.log("Success", tweetMessage);
+    // $.post("/tweets", formDataString, function (formDataString) {
+    //   console.log("Success", tweetMessage);
 
-     })
-    })
+    // })
+    $.ajax({
+      method: "POST",
+      url: "/tweets",
+      data: formDataString,
+      success: function (formDataString) {
+        console.log("Success", tweetMessage);
+        loadTweets();
+      }
+
+    });
+
+  });
+
+  const loadTweets = function () {
+    // Function for fetching tweets from "/tweets" page
   
-  const $textarea = $(".textarea");
-  $textarea.on('submit')
+    $.ajax({
+      method: "GET",
+      url: "/tweets",
+      data: "json",
+      success: function (data) {
+        console.log("Success: ", data);
+        renderTweets(data);
+      }
+    });
+  }
+  loadTweets();
+  // const $textarea = $(".textarea");
+  // $textarea.on('submit')
+
+  
+  
 
 });
+
 
 
 
