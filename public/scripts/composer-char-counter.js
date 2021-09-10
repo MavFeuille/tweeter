@@ -1,3 +1,4 @@
+//Function to build character counter
 $(document).ready(function() {
   console.log("Ready to count!");
   $(".textarea").on("input", function(event) {

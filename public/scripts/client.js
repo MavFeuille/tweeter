@@ -79,22 +79,22 @@ $(document).ready(() => {
   };
   
 
-  //Add event listener for submitting form & prevent default behavior
+  //Add event listener for for submission & prevent default behavior
   const $incomingTweet = $(".incomingTweet");
   $incomingTweet.on('submit',function(event) {
     event.preventDefault();
     console.log("Incoming tweet is on its way, performing ajax call...");
 
+    //Serialize raw data input in the form (Compose Tweet box)
     const formDataString = $(this).serialize();
     console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
     console.log("this: ", this);
     console.log("formDataString: ", formDataString);
-    // const tweetLength = formDataString.length;
-    // console.log("🚀 ~ file: client.js ~ line 77 ~ tweetLength", tweetLength)
     
+
+    //Form validation on character counts to trigger corresponding error message
     const tweetLength = $(".textarea").val().length;
     console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
-    
     
     if (tweetLength === 0) {
       $("#0characters").slideDown("slow", popError);
