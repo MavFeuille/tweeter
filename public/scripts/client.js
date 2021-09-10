@@ -6,22 +6,22 @@
  */
 
 
- //Escape function to prevent XSS for tweet element created as a string literal
- const escape = function (str) {
+//Escape function to prevent XSS for tweet element created as a string literal
+const escape = function(str) {
   let tweetArticle = document.createElement("tweet-article");
   tweetArticle.appendChild(document.createTextNode(str));
   return tweetArticle.innerHTML;
 };
 
 //Helper function set timeout for error messages
-const popError = function () {
+const popError = function() {
   $(".error").delay(15000).slideUp("slow");
 };
 
 // Returning tweet <article> when doc is ready
-$(document).ready (() => {
-   //Hide error message by default
-   $(".error").hide();
+$(document).ready(() => {
+  //Hide error message by default
+  $(".error").hide();
 
   //Setting toggle button on NAV bar
   $(".fas.fa-angle-double-down ").on("click", (event) => { 
@@ -30,15 +30,15 @@ $(document).ready (() => {
   });
 
   //Extract each data OBJECT from the data ARRAY
-  const renderTweets = function (tweets) {
+  const renderTweets = function(tweets) {
     $("#tweets-container").empty();
     for (const item of tweets) {
       // loops through tweets
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
-        const tweet = createTweetElement(item);
-        console.log("Tweet from line 43: ", tweet);
-        $("#tweets-container").prepend(tweet)
+      const tweet = createTweetElement(item);
+      console.log("Tweet from line 43: ", tweet);
+      $("#tweets-container").prepend(tweet);
     }
   };
   
@@ -81,33 +81,31 @@ $(document).ready (() => {
 
   //Add event listener for submitting form & prevent default behavior
   const $incomingTweet = $(".incomingTweet");
-  $incomingTweet.on('submit',function (event) {
+  $incomingTweet.on('submit',function(event) {
     event.preventDefault();
-    console.log("Incoming tweet is on its way, performing ajax call...")
+    console.log("Incoming tweet is on its way, performing ajax call...");
 
     const formDataString = $(this).serialize();
-    console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString)
+    console.log("🚀 ~ file: client.js ~ line 97 ~ formDataString", formDataString);
     console.log("this: ", this);
     console.log("formDataString: ", formDataString);
     // const tweetLength = formDataString.length;
     // console.log("🚀 ~ file: client.js ~ line 77 ~ tweetLength", tweetLength)
     
     const tweetLength = $(".textarea").val().length;
-    console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength)
+    console.log("🚀 ~ file: client.js ~ line 80 ~ tweetLength", tweetLength);
     
     
     if (tweetLength === 0) {
-      // alert("Please feed me with some text!");
       $("#0characters").slideDown("slow", popError);
-    } else if (tweetLength >140) {
-      // alert("Tweet is too long T___T");
+    } else if (tweetLength > 140) {
       $("#tweet-too-long").slideDown("slow", popError);
     } else {
       $.ajax({
         method: "POST",
         url: "/tweets",
         data: formDataString,
-        success: function (formDataString) {
+        success: function(formDataString) {
           console.log("Success", formDataString);
           loadTweets();
         }
@@ -116,17 +114,17 @@ $(document).ready (() => {
   });
 
   // Function for fetching tweets from "/tweets" page
-  const loadTweets = function () {
+  const loadTweets = function() {
     $.ajax({
       method: "GET",
       url: "/tweets",
       data: "json",
-      success: function (data) {
+      success: function(data) {
         console.log("Success: ", data);
         renderTweets(data);
       }
     });
-  }
+  };
   loadTweets();
 });
 
