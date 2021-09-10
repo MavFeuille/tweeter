@@ -18,7 +18,6 @@
   border-radius: 15px;
 }
 
-
 .tweet-header {
   /* border: 2px solid yellow; */
   width: 100%;
@@ -29,7 +28,6 @@
 .display-pic-name {
   display: flex;
   margin: 10px 0 0 10px;
-
 }
 
 .tweeter-name{
@@ -69,37 +67,22 @@
 }
 
 .fas.fa-flag {
-  /* display: flex; */
-  /* padding-left: 3em; */
-  /* justify-content: flex-end; */
-  /* padding-bottom: 1.5em; */
   color: #4056A1;
  
 }
 
 .fas.fa-retweet {
-  /* display: flex; */
-  /* padding-left: 3em; */
-  /* justify-content: flex-end; */
-  /* padding-bottom: 1.5em; */
   color: #4056A1;
   margin-left: 3px;
   margin-right: 3px;
 }
 
 .fas.fa-heart {
-  /* display: flex; */
-  /* padding-left: 3em; */
-  /* justify-content: flex-end; */
-  /* padding-bottom: 1.5em; */
   color: #4056A1;
 }
 
-
-
 .tweet-article:hover {
   box-shadow: 10px 10px #CDD2E8;
-  
 }
 
 .fas.fa-flag:hover {

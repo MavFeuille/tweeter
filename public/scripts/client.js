@@ -13,9 +13,9 @@
   return tweetArticle.innerHTML;
 };
 
-//Helper function set timeout
+//Helper function set timeout for error messages
 const popError = function () {
-  $(".error").delay(10000).slideUp("slow");
+  $(".error").delay(15000).slideUp("slow");
 };
 
 // Returning tweet <article> when doc is ready
@@ -23,8 +23,8 @@ $(document).ready (() => {
    //Hide error message by default
    $(".error").hide();
 
-
-  $(".fas.fa-angle-double-down ").on("click", (event) => {
+  //Setting toggle button on NAV bar
+  $(".fas.fa-angle-double-down ").on("click", (event) => { 
     $(".incomingTweet").toggle("slow");
     $(".textarea").focus();
   });
@@ -39,9 +39,7 @@ $(document).ready (() => {
         const tweet = createTweetElement(item);
         console.log("Tweet from line 43: ", tweet);
         $("#tweets-container").prepend(tweet)
-
     }
-
   };
   
   // Pass the data OBJECT that extracted by renderTweets function to below so each tweet will be reflected on the browser
@@ -117,9 +115,8 @@ $(document).ready (() => {
     }
   });
 
+  // Function for fetching tweets from "/tweets" page
   const loadTweets = function () {
-    // Function for fetching tweets from "/tweets" page
-  
     $.ajax({
       method: "GET",
       url: "/tweets",
@@ -131,9 +128,6 @@ $(document).ready (() => {
     });
   }
   loadTweets();
-  // const $textarea = $(".textarea");
-  // $textarea.on('submit')
-
 });
 
 
