@@ -16,8 +16,8 @@ html {
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  color: #545149;
-  background-color: #f4f1ec;
+  color: grey;
+  background-color: #F9FCFC ;
   font-size: 24px;
 }
 
@@ -30,9 +30,11 @@ body {
   display: flex;
   justify-content: center;
   /* background-color: #f4f1ec; */
-  background-color: #ECEADE;
+  /* background-color:#D8F9FC; */
+  background-image: linear-gradient(to top right, #DEF6F4, #F3FAF9);
   margin: 0 auto;
   flex-direction: column;
   padding-top: 530px;
   
- }
+}
+

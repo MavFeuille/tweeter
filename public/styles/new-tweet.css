@@ -1,7 +1,9 @@
 .new-tweet {
   height: 30%;
   width: 100%;
-  background-color: #ECEADE;
+  /* background-color: #ECEADE; */
+  background-image: linear-gradient(to left, 	#7AFCF4, #F3FAF9);
+  /* opacity: 0.7; */
   padding: 10px 30px 20px 30px;
 }
 

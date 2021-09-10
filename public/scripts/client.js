@@ -18,10 +18,16 @@ const popError = function () {
   $(".error").delay(10000).slideUp("slow");
 };
 
-// Returning tweet <article>
+// Returning tweet <article> when doc is ready
 $(document).ready (() => {
    //Hide error message by default
    $(".error").hide();
+
+
+  $(".fas.fa-angle-double-down ").on("click", (event) => {
+    $(".incomingTweet").toggle("slow");
+    $(".textarea").focus();
+  });
 
   //Extract each data OBJECT from the data ARRAY
   const renderTweets = function (tweets) {
